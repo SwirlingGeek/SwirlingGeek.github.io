@@ -11,6 +11,7 @@
 			padding: 0;
 			overflow: hidden;
 			position: relative;
+			color: velvet;
 		}
 
 		canvas {
@@ -30,6 +31,73 @@
 			color: red;
 			transform: rotate(360deg);
 		}
+
+		canvas {
+			opacity: 1;
+		}
+
+		.customization {
+			position: absolute;
+			top: 10%;
+			left: 20%;
+
+			background: white;
+			opacity: 0.7;
+			display: none;
+			border: 5px solid black;
+			border-radius: 20%;
+		}
+
+		.innercustom {
+
+			display: grid;
+			background-color: teal;
+			min-width: 52%;
+			min-height: 70%;
+			margin-top: 2%;
+			border-radius: 5%;
+			border: 2px dashed yellow;
+			opacity: 0.6;
+			grid-template-rows: 1fr 1fr;
+			grid-template-columns: 1fr 1fr;
+			justify-content: center;
+		}
+
+		.innercustom:hover {
+			opacity: 1;
+			background-color: turquoise;
+		}
+
+		.hidden1 {
+			display: none;
+		}
+
+		.first {
+			justify-self: center;
+		}
+
+		.third {
+			justify-self: center;
+		}
+
+		.messages {
+			position: relative;
+			margin-left: 200px;
+		}
+
+		.hidden1,
+		.hidden2,
+		.hidden3,
+		.hidden4 {
+			position: absolute;
+			text-align: center;
+			display: none;
+		}
+
+		.close {
+			text-align: center;
+			cursor: grab;
+		}
 	</style>
 
 </head>
@@ -38,7 +106,42 @@
 	<button>Customize</button>
 
 	<canvas id="canvas"></canvas>
+	<div class="customization">
+		<div class="messages">
+			<p class="hidden1">Invalid particle radius!</p>
+			<p class="hidden2">Invalid particle color!</p>
+			<p class="hidden3">Invalid background color!</p>
+			<p class="hidden4">Invalid particle max-speed!</p>
+		</div>
+		<div class="close">&#10005;</div>
+		<div class="innercustom">
+			<div class="first">
+				<p>Particle radius:</p>
+				<input type="number" value="3">
 
+
+			</div>
+			<div class="second">
+				<p>Particle color:</p>
+				<input type="color" value="#ff0000">
+
+
+			</div>
+			<div class="third">
+				<p>Background color:</p>
+				<input type="color" value="#000000">
+
+
+			</div>
+			<div class="fourth">
+				<p>Particle max speed:</p>
+				<input type="number" value="3">
+
+
+			</div>
+		</div>
+
+	</div>
 
 	<script src="script.js"></script>
 </body>
