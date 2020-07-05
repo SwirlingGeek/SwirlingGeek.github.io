@@ -5,17 +5,41 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>My own game</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			position: relative;
+		}
+
+		canvas {
+			z-index: 1;
+		}
+
+		button {
+			position: absolute;
+			z-index: 5;
+			opacity: 0.6;
+			right: 10px;
+			transition-duration: 3s;
+		}
+
+		button:hover {
+			opacity: 1;
+			color: red;
+			transform: rotate(360deg);
+		}
+	</style>
+
 </head>
 
 <body>
+	<button>Customize</button>
+
 	<canvas id="canvas"></canvas>
 
-	<!-- <noscript src="script.js" defer></noscript> -->
-	<div class="outerbar">
-		<p>you can increase or decrease:</p>
-		<div class="bar"></div>
-	</div>
+
 	<script src="script.js"></script>
 </body>
 
