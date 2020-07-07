@@ -6,6 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>My own game</title>
 	<style>
+		* {
+			user-select: none;
+		}
+
 		body {
 			margin: 0;
 			padding: 0;
@@ -14,134 +18,145 @@
 			color: velvet;
 		}
 
-		canvas {
-			z-index: 1;
-		}
-
-		button {
+		.button {
+			background: white;
 			position: absolute;
-			z-index: 5;
+			right: 20px;
+			border: 5px ridge grey;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			font-weight: bolder;
 			opacity: 0.6;
-			right: 10px;
-			transition-duration: 3s;
+			font-variant: small-caps;
 		}
 
-		button:hover {
-			opacity: 1;
-			color: red;
-			transform: rotate(360deg);
-		}
+		.button:hover {
 
-		canvas {
+			transform: scale(1.5, 1.4);
+			border: none;
+			font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			font-weight: bolder;
 			opacity: 1;
+
 		}
 
 		.customization {
 			position: absolute;
-			top: 10%;
-			left: 20%;
-
-			background: white;
-			opacity: 0.7;
-			display: none;
-			border: 5px solid black;
-			border-radius: 20%;
-		}
-
-		.innercustom {
-
-			display: grid;
-			background-color: teal;
-			min-width: 52%;
-			min-height: 70%;
-			margin-top: 2%;
-			border-radius: 5%;
-			border: 2px dashed yellow;
-			opacity: 0.6;
-			grid-template-rows: 1fr 1fr;
-			grid-template-columns: 1fr 1fr;
+			height: 100vw;
+			width: 100vw;
+			display: flex;
+			align-items: center;
 			justify-content: center;
+			/* background-color: yellow; */
 		}
 
-		.innercustom:hover {
-			opacity: 1;
-			background-color: turquoise;
-		}
-
-		.hidden1 {
-			display: none;
-		}
-
-		.first {
-			justify-self: center;
-		}
-
-		.third {
-			justify-self: center;
-		}
-
-		.messages {
+		.innercustomization {
+			height: 50%;
+			width: 70%;
+			opacity: 0.6;
+			border: 5px solid blue;
+			border-radius: 25%;
+			background-color: rgb(95, 230, 95);
 			position: relative;
-			margin-left: 200px;
-		}
 
-		.hidden1,
-		.hidden2,
-		.hidden3,
-		.hidden4 {
-			position: absolute;
-			text-align: center;
-			display: none;
 		}
 
 		.close {
 			text-align: center;
-			cursor: grab;
+			border: 2px solid black;
+			user-select: none;
+		}
+
+		.repeat {
+			height: 50px;
+			width: 50px;
+
+			border: 3px solid red;
+			animation-name: myAnim;
+			animation-duration: 4s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate-reverse;
+		}
+
+
+		@keyframes myAnim {
+			0% {
+				border: 4px solid yellow;
+			}
+
+			25% {
+				border: 5px solid blue;
+			}
+
+			50% {
+				border: 6px solid green;
+			}
+
+			100% {
+				border: 3px solid red;
+			}
+		}
+
+		.actions {
+			display: flex;
+			flex-wrap: wrap;
+			height: 80%;
+			justify-content: space-around;
+
+		}
+
+		.first,
+		.second {
+			flex-basis: 30%;
+			line-height: 20px;
+			height: 40%;
+		}
+
+		.third {
+			flex-basis: 25%;
+			justify-self: right;
 		}
 	</style>
 
 </head>
 
 <body>
-	<button>Customize</button>
-
-	<canvas id="canvas"></canvas>
+	<div class="button">Customize</div>
 	<div class="customization">
-		<div class="messages">
-			<p class="hidden1">Invalid particle radius!</p>
-			<p class="hidden2">Invalid particle color!</p>
-			<p class="hidden3">Invalid background color!</p>
-			<p class="hidden4">Invalid particle max-speed!</p>
-		</div>
-		<div class="close">&#10005;</div>
-		<div class="innercustom">
-			<div class="first">
-				<p>Particle radius:</p>
-				<input type="number" value="3">
+		<div class="innercustomization">
+			<div class="close">&#10005;</div>
+			<div class="actions">
+				<div class="first">
+					<p>
+						Pacticle size:
+						<input type="number" value="3">
+					</p>
 
+				</div>
+				<div class="second">
+					<p>
+						Pacticle max speed:
+						<input type="number" value="5">
+					</p>
+				</div>
+				<div class="third">
+					<p>Particle color:</p>
+					<input type="color" value="#FF0000">
+				</div>
+				<div class="fourth">
+					<p>Background color:</p>
+					<input type="color" value="#000000">
+				</div>
 
-			</div>
-			<div class="second">
-				<p>Particle color:</p>
-				<input type="color" value="#ff0000">
-
-
-			</div>
-			<div class="third">
-				<p>Background color:</p>
-				<input type="color" value="#000000">
-
-
-			</div>
-			<div class="fourth">
-				<p>Particle max speed:</p>
-				<input type="number" value="3">
-
-
+				<div class="fifth">
+					<p>Lines length:</p>
+					<input type="number" value="15">
+				</div>
 			</div>
 		</div>
 
 	</div>
+	<canvas id="canvas"></canvas>
+
 
 	<script src="script.js"></script>
 </body>

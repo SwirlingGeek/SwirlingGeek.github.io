@@ -2,7 +2,7 @@
 
 
 (function () {
-	let canvas = document.querySelector('canvas');
+	let canvas = document.querySelector('#canvas');
 	let ctx = canvas.getContext('2d');
 
 	let w = canvas.width = innerWidth;
@@ -113,14 +113,28 @@
 	let customized = document.querySelector('.customization');
 	let w = window.innerWidth;
 	let h = window.innerHeight;
-	customized.style.height = h / 2 + 'px';
-	customized.style.width = w / 2 + 'px';
+	customized.style.height = h + 'px';
+	customized.style.width = w + 'px';
+	//adding the width depending on the width of the customization width:
+
+	//!adding effects to .close:
+
+	let closer = document.querySelector('.close');
+
+
+
+	closer.addEventListener('click', () => {
+		document.querySelector('.innercustomization').style.display = 'none';
+	});
+
+
 	//add event listener to customize:
-	let customize = document.querySelector('button');
-	customize.addEventListener('click', () => document.querySelector('.customization').style.display = 'block');
+	let button = document.querySelector('div');
+	button.onclick = function () {
+		console.log('Hi, dummy')
+	}
 	//adding an event listener to close:
-	let close = document.querySelector('.close');
-	close.addEventListener('click', () => document.querySelector('.customization').style.display = 'none');
+
 
 
 })(); 
