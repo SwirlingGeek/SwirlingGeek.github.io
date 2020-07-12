@@ -162,11 +162,11 @@ function went(properties) {
 	backgroundcolor.addEventListener('change', event => {
 		let value = backgroundcolor.value;
 		properties.backgroundColor = value;
-	})
+	});
 	lineslength.addEventListener('change', event => {
 		let value = lineslength.value;
-		properties.linesLength = value;
-	})
+		properties.lineLength = value * 10;
+	});
 	return properties;
 }
 
