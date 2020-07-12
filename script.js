@@ -2,12 +2,6 @@
 
 
 (function () {
-	let canvas = document.querySelector('#canvas');
-	let ctx = canvas.getContext('2d');
-
-	let w = canvas.width = innerWidth;
-	let h = canvas.height = innerHeight;
-	let particles = [];
 
 	let properties = {
 		backgroundColor: 'rgba(17, 17, 19, 1)',
@@ -18,6 +12,16 @@
 		lineLength: 150,
 		particleLife: 6
 	}
+	properties = went(properties);
+	//accesing 
+	let canvas = document.querySelector('#canvas');
+	let ctx = canvas.getContext('2d');
+
+	let w = canvas.width = innerWidth;
+	let h = canvas.height = innerHeight;
+	let particles = [];
+
+
 	//working with windows:
 
 	window.addEventListener('resize', () => {
@@ -109,32 +113,63 @@
 	}
 
 })();
-(function () {
+function went(properties) {
 	let customized = document.querySelector('.customization');
 	let w = window.innerWidth;
 	let h = window.innerHeight;
 	customized.style.height = h + 'px';
 	customized.style.width = w + 'px';
-	//adding the width depending on the width of the customization width:
-
 	//!adding effects to .close:
-
 	let closer = document.querySelector('.close');
-
-
-
 	closer.addEventListener('click', () => {
 		document.querySelector('.innercustomization').style.display = 'none';
 	});
+	let button = document.querySelector('#button');
+	button.addEventListener('click', () => {
+
+		if (document.querySelector('.innercustomization').style.display == 'block') {
+			document.querySelector('.innercustomization').style.display = 'none';
+
+		} else if (document.querySelector('.innercustomization').style.display == 'none') {
+			document.querySelector('.innercustomization').style.display = 'block';
 
 
-	//add event listener to customize:
-	let button = document.querySelector('div');
-	button.onclick = function () {
-		console.log('Hi, dummy')
-	}
-	//adding an event listener to close:
+		} else {
+			document.querySelector('.innercustomization').style.display = 'block';
+
+		}
+
+	});
+	//adding listeners:
+	let particlesize = document.querySelector('input[name="particlesize"]');
+	let particlecolor = document.querySelector('input[name="particlecolor"]');
+	let particlespeed = document.querySelector('input[name="particlespeed"]');
+	let backgroundcolor = document.querySelector('input[name="backgroundcolor"]');
+	let lineslength = document.querySelector('input[name="lineslength"]');
+	//adding particle size:
+	particlesize.addEventListener('change', event => {
+		let value = particlesize.value;
+		properties.particleRadius = value;
+	});
+	particlecolor.addEventListener('change', event => {
+		let value = particlecolor.value;
+		properties.particleColor = value;
+	});
+	particlespeed.addEventListener('change', event => {
+		let value = particlesize.value;
+		properties.particlespeed = value;
+	});
+	backgroundcolor.addEventListener('change', event => {
+		let value = backgroundcolor.value;
+		properties.backgroundColor = value;
+	})
+	lineslength.addEventListener('change', event => {
+		let value = lineslength.value;
+		properties.linesLength = value;
+	})
+	return properties;
+}
 
 
 
-})(); 
+
